@@ -1,0 +1,14 @@
+I do Not know how big of a micro SD card you will need.
+
+Ifn there is only one voicemail box on the system, I would remove
+all vm-intro.* from /var/lib/asterisk/sounds/en/
+
+
+    same => n,VoiceMail(1000@VoiceMail)
+
+When VoicdMail is called it plays
+; vm-intro.gsm
+; beep.gsm
+; auth-thankyou.gsm
+
+You want to  
