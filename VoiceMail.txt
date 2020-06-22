@@ -1,14 +1,41 @@
-I do Not know how big of a micro SD card you will need.
-
-Ifn there is only one voicemail box on the system, I would remove
-all vm-intro.* from /var/lib/asterisk/sounds/en/
+I do Not know how big of a micro SD card you will need in your situation,
+Number of mail boxes & your volume of messages.
 
 
+If there is only one voicemail box on the system, I would remove
+all vm-intro.* from /var/lib/asterisk/sounds/en/ and make your own.
+I would personalize the message too.
+    ex: You have reach 867-5309. We are unable to take your call.
+        Please leave a message.
+
+
+When the 'VoiceMail' command is execute, in this example for user 1000
     same => n,VoiceMail(1000@VoiceMail)
 
-When VoicdMail is called it plays
-; vm-intro.gsm
-; beep.gsm
-; auth-thankyou.gsm
+it plays
+   vm-intro.gsm
+   beep.gsm
+   auth-thankyou.gsm
 
-You want to  
+
+If you have set up your VOIP phone id to be equal to your user id,
+you basically need to do
+---append to bottom of extensions.conf---
+
+[internal]
+exten => *,1,VoiceMailMain(${CALLERID(num)}@VoiceMail)
+
+---append to bottom of sip.conf---
+
+[1000]
+type=friend
+secret=1                 ; password
+context=internal
+host=dynamic
+mailbox=1000@VoiceMail
+
+---
+
+Yes, my mother did not like typing '*' then '1' for the password to 
+get to the VoiceMail mailbox!
+

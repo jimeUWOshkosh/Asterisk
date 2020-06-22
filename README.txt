@@ -30,8 +30,6 @@ Increasing the Obi’s “ring delay” to 6000 does Not improve the probability
 Therefore I would change the algorithm to
     disapprove/blacklist
 
-    disapprove by ${CALLERID(name)}         ; This how I can stop political robo calls
-            
     Read(digit,custom/no-solicitors,1,s,1,4)      ; Read one digit in 4 seconds
     GotoIf($["${digit}" != "1"]?NoResponse)
     Playback(one-moment-please)
