@@ -7,42 +7,44 @@ This project is
     • Its on a inTRAnet
     • Mom does Not like voicemail!!!!
     • Disaster Recovery is important
-    • I do Not live in town
-    • My Mom and I review her log of bad calls every weekend
-    • I make changes to the block and approved lists
-    • Weekly backups are important, then flashing a micro SDcard afterwords
+        • I do Not live in town
+        • My Mom and I review her log of bad calls every weekend
+        • I make changes to the block and approved lists
+        • Weekly backups are important, then flashing a micro SDcard afterwords
+
           Going to try going 8gb micro SDcard
           RPi 4B’s USB 3.0 are awesome for backups
-    • Have a backup hardware: RPi, OBi110
-    • Have a UPS for 4 outlets
+
+        • Have a backup hardware: RPi, OBi110
+        • Have a UPS for 4 outlets
 
 Either today’s telephone companies are bad or OBi110 has an issue of not
- always getting the Calling Number from the telephone company.
-    1. OBITRUNK1 is a default phone number in the Asterisk’s white listed table
+ always getting the Calling Number from the telephone company. Why
+    1. OBITRUNK1 is a default phone number in the Asterisk’s whitelist table
     2. “End robocaller, solicitation, and hangup calls with Asterisk & Raspberry Pi” 
-       by Bill Bishop posted 4apr2013 : Use entering a digit to get the phone to ring
+       by Bill Bishop posted 4apr2013 : Use only entering a digit to get the phone to ring
 
 One of my sisters and I get hit by this numerous times a week calling Mom & Dad. 
 Increasing the Obi’s “ring delay” to 6000 does Not improve the probability of the issue from not happening.
 
 Therefore I would change the algorithm to
-	disapprove/blacklist
+    disapprove/blacklist
 
-	disapprove by ${CALLERID(name)}         ; This how I can stop political robo calls
+    disapprove by ${CALLERID(name)}         ; This how I can stop political robo calls
             
-Read(digit,custom/no-solicitors,1,s,1,4)      ; Read one digit in 4 seconds
-GotoIf($["${digit}" != "1"]?NoResponse)
-Playback(one-moment-please)
-Dial(SIP/PHONE)
-GotoIf($["${DIALSTATUS}" = "BUSY"]?biseee)
-Hangup()
-;
-(NoResponse)
-Hangup()
-;
-(biseee)
-PlayBack(is-curntly-busy)   5 times
-Hangup()
+    Read(digit,custom/no-solicitors,1,s,1,4)      ; Read one digit in 4 seconds
+    GotoIf($["${digit}" != "1"]?NoResponse)
+    Playback(one-moment-please)
+    Dial(SIP/PHONE)
+    GotoIf($["${DIALSTATUS}" = "BUSY"]?biseee)
+    Hangup()
+    ;
+    (NoResponse)
+    Hangup()
+    ;
+    (biseee)
+    PlayBack(is-curntly-busy)   5 times
+    Hangup()
 
 No negative reinforcement from siblings since every one is treated the same whether 
 the Asterisk gets the calling phone number or not!
@@ -55,7 +57,4 @@ put off.
 
 Also, my parents have 5 phones in the house, so periodically a phone is not hung up 
 properly. Have to program for dial status of busy.
-
-
-
 
