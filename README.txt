@@ -2,6 +2,13 @@ June-2020
 raspbx-11-11-2019, Asterisk 16.6.1 & FreePBX 15.0.16.22
 An 8GB card or larger is recommended.
 
+---
+This is Time-sensitive documentation
+    Software changes
+    OBi110 could be obsolete
+    The FCC has said landlines where suppose to gone by 2020
+---
+
 Did NOT use FreePBX, only Asterisk!
 
 This project is 
@@ -61,3 +68,7 @@ put off.
 Also, my parents have 5 phones in the house, so periodically a phone is not hung up 
 properly. Have to program for dial status of busy.
 
+Note: Do Not purchase any Asterisk books
+      I bought 4 and wasted my money for what I'm doing here.
+      They were all fine books but not focus on my project needs.
+      Your best bet is youtube and googling

@@ -1,0 +1,239 @@
+June-2020
+Using a intranet
+Using a RPi 4B
+Using a unix laptop to download and flash the image file to the micro SDcard
+SanDisk: Class 4 8GB
+    You can always create an image and flash the image to a larger card,
+    then use raspi-config to expand the file system.
+    You can NOT go the other way!
+Dynex: Mini Memory Card Reader/Writer
+OBIHAI: OBi 110 Voice Service Bridge & Telephone Adapter
+NetGear hub: optional on your project???
+
+---
+From Timm Murray at wumpus-cave.net in mar-2018
+SD Cards
+The main storage system on the Pi is an SD card (the Pi3 requires
+a micro SD card). If you take a quick look at SD card speed classes,
+you may be tempted to buy the first Class 10 or U3 card you can find.
+
+Before you do that, note that the speed classes on SD cards refers to
+the sequential writing speed. This is good if you were putting your
+SD card in a camera, since streaming 60 frames of 4k video every second
+takes a lot of sequential writing. Running an operating system off that
+SD card does a lot of random access, not sequential. In practice,
+you’ll often find that a quality Class 4 card works better than a cheap
+Class 10.
+
+Recently, the A1 and A2 performance classes were released. These specify
+a minimum number of random IO operations per second, which is exactly
+what we want for the Pi. These are worth looking into.
+
+You should look at benchmarks to compare SD cards on the Pi. The Pi’s own
+SD card access rate is admittedly limited, so you may see the Pi hit a
+bottleneck before the SD card itself is maxed out.
+
+As for size, at least 8GB will do. You can get away with 4GB, but you’ll
+find yourself limited at that size.
+---
+
+Please read raspbx install notes a couple times!!!!
+http://www.raspberry-asterisk.org/documentation/
+
+Peruse this doc a few times
+
+Come up with a game plan
+    You maybe hooking up to the internet???
+        Time sync-ing
+        firewall on your RPi
+        Helluva lot better passwords than I'm using bewteen the
+            Obi100 and Asterisk
+    You may wish to use FreePBX web interface
+    You may wish to use PJSIP rather the SIP
+---
+
+Whats your editor of choice?
+    nano, vim
+       Practice 
+          inserting/modify text by typing
+          inserting text with cut & paste
+
+---
+
+I'm using a inTRAnet so I can plug in a VoIP phone for testing Voicemail
+
+You could plug in the OBi110 to the RPi with a 'crossover' cable and use a 
+monitor off of the RPi therefore elminating the need for a network hub
+Gotcha: If you don't configure the non-RPi keyboard in properly, some keys
+        won't work!
+---
+A note from Timm Murray:
+Pi4's ethernet should be auto-sensing, so you shouldn't need a crossover cable.  
+Auto-sensing is standard on 1Gbps ethernet, and will come on most 100Mbps 
+ports these days, too.
+---
+
+
+My NetGear hub came with a IP address of 192.168.0.239
+I'm going to use that subnet!
+
+
+My RPi, I'll assign 192.168.0.10
+My OBi110, I'll assign 192.168.0.20 
+    See Assign.OBi110.IP.txt
+
+To format SD Card
+  Download
+     Etcher www.canakit.com/tools/etcher
+        To format SD card w/ adapter and put Raspbian OS on it
+  Download OS zip file
+     RasPBX http://www.raspberry-asterisk.org/downloads/
+     I extraced the 'img' file using the OS's Archive Manager
+
+  Excute the Etcher API file
+     Plug in your card reader into your laptop
+     Plug your micro card with adapter into the card reader
+
+     $ mkdir Etcher
+     $ mv ~/Downloads/Etcher Downloads/balena-etcher-electron-1.5.76-linux-x64.zip \
+          ~/Etcher/.
+     $ cd Etcher
+     $ unzip -d Etcher Downloads/balena-etcher-electron-1.5.76-linux-x64.zip
+     $ mv ~/Downloads/raspbx-11-11-2019.img ~/Etcher/.
+     $ ./balenaEtcher-1.5.76-x64.AppImage 
+          Plenty of errors generated before GUI appears
+          Choose your image file
+		I'm using raspbx-11-11-2019.img
+          Choose to Flash and Copy Image
+
+Put card into RPi
+
+Whats your preferred way to connect to your RPi
+   1) ethernet cable to the laptop. Need to setup routing on laptop
+       Ubuntu 18.04
+       Setting->Network->Wired-> '+' to add network and netmask
+   2) HDMI to TV and wireless keyboard
+
+Default root Password: raspberry
+
+Expand filesystem
+   $ sudo raspi-config
+   Advanced Options
+      Expand Filesystem
+         You will be prompted to reboot to make the changes take effect
+            Yes
+
+Assign IP address to the RPi
+
+   $ su do raspi-config
+       Network Options
+           changed hostname
+       Localisation Options
+           Change Locale language
+           Change timezone
+           Change wifi country
+   Append to /etc/hosts
+       192.168.0.10	{hostname}
+   Append to /etc/dhcpcd.conf
+       interface eth0
+       static ip_address=192.168.0.10/24
+       netmask 255.255.255.0
+   If you want to be able to plug in a monitor after a while w/out it
+       Append to /boot/config.txt
+           hdmi_force_hotplug=1
+
+
+You can reboot if you're not ready to upgrade your OS.
+    $ shutdown -r now
+
+Define how you're going to update your RPi
+    I use the wifi at the local library. Watch out. My local library has
+    multiple wifi networks. Grab verbage for the correct one.
+    Use your laptop to help you.
+
+    Append wifi definition to /etc/wpa_supplicant/wpa_supplicant.conf
+    example1 (no password):
+        network={
+                ssid="Oshkosh Public Library"
+                key_mgmt=NONE
+                id_str="oshkosh"
+        }
+    example2 (password):
+        network={
+                ssid="MYNEIGHBORS"
+                psk="dudegavemethepassword"
+                id_str="bobs"
+        }
+
+    Reboot: $ shutdown -r now
+   
+    See if you attached to the wifi: $ iwconfig | more
+
+--- TODO ------
+
+Find raspbx install notes
+    Need time keeper
+
+
+You connected to some network and wish to upgrade your RPi and additional
+software
+    $ sudo raspbx-upgrade
+
+From: Asterisk for Raspberry Pi: Documentation
+http://www.raspberry-asterisk.org/documentation/
+3) Running RasPBX without Internet connection
+   If Internet connection is not continuously present or not present at all, 
+   2 issues can appear that prevent calling between extensions:
+    $  apt-get install fake-hwclock
+    $  apt-get install dnsmasq
+    $  cd /etc
+    $  mv resolv.conf resolv.conf.dnsmasq
+    $  vim /etc/dnsmasq.conf
+    $  vim /etc/resolv.conf
+    $  /etc/init.d/dnsmasq restart
+
+
+Versions
+    $ cat /etc/os-release
+    ...
+    VERSION="10 (buster)"
+    ...
+
+    $ asterisk -V
+    Asterisk 16.9.0
+
+    Note: You did an update so Asterisk went from 16.6.1 to 
+          a higher version
+
+
+I'm going to stop freepbx and apache from running
+    Need prevented from overwriting the Asterisk config files
+    $ systemctl disable freepbx
+
+    $ systemctl disable apache2
+
+    This file needs to be downloaded and placed in /etc/init.d/:
+        http://repo.raspbx.org/download/asterisk
+        My current version is in the github repo
+                Asterisk.initd.txt
+
+    $ chmod 755 /etc/init.d/asterisk
+    $ systemctl enable asterisk
+
+Clean up comments in conf files
+    $ mkdir oldconfs
+    $ cd oldconfs
+    $ cp /etc/asterisk/sip.conf sip.conf.orig
+    $ cp /etc/asterisk/extensions.conf extensions.conf.orig
+    $ cp /etc/asterisk/voicemail.conf  voicemail.conf.orig
+
+    Optional 
+       Edit sip.conf extensions.conf
+    
+       vim commands to get rid of excessive documentation 
+           :g/^\s*;/d
+           :g/^$/d
+
+Edit sip.conf, extensions.conf, and voicemail.conf with my changes
+    $ cd /etc/asterisk
+    Edit away

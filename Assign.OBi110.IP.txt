@@ -1,0 +1,14 @@
+Default no IP address but DHCP is set
+
+Restore Factory Settings
+   Put paper clip into pin hole on back for 10 seconds
+   The OBi will reboot
+
+To Assign IP Address
+   Hook phone to outgoing phone port
+      Dial ***4
+      and follow the menu
+        1 to change
+        192*168*0*20#
+        2 to save
+        OBi will reboot
