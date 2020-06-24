@@ -72,3 +72,30 @@ Note: Do Not purchase any Asterisk books
       I bought 4 and wasted my money for what I'm doing here.
       They were all fine books but not focus on my project needs.
       Your best bet is youtube and googling
+
+---
+Contents of repository
+
+README.txt
+HowToInstall-raspbx.txt
+    asterisk-initd.txt
+    sip.conf
+    extensions.conf
+    voicemail.conf
+        VoiceMail.txt
+        blacklist.txt
+        no-solicitors.gsm
+PostInstall.txt
+
+Assign.OBi110.IP.txt
+OBi110setup.ods
+
+Other Notes
+    DisableFreePBX.txt
+    ForceGettyOnHDMI.txt
+
+    DialPlanNotes.txt
+    PrintingDateInDailPlan-Windows.txt
+
+    CustomSoundFiles.txt
+    WavToGSM.txt
