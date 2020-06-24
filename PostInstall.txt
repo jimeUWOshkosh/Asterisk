@@ -1,0 +1,15 @@
+Do you want to disable WiFi and Bluetooth after you get 
+everything going?
+
+"sudo nano /boot/config.txt"
+
+dtoverlay=pi3-disable-bt
+dtoverlay=pi3-disable-wifi
+
+"sudo systemctl disable hciuart"
+
+====
+sudo systemctl disable hciuart.service
+sudo systemctl disable bluealsa.service
+sudo systemctl disable bluetooth.service
+

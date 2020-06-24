@@ -1,0 +1,9 @@
+DO you want the login to the system console to active even
+when you monitor is not plugged in?
+
+
+$ cp /boot/config.txt /boot/config.txt.bak
+$ vi /boot/config.txt
+
+
+hdmi_force_hotplug=1

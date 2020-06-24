@@ -1,0 +1,19 @@
+GotoIf
+https://www.voip-info.org/asterisk-cmd-gotoif/
+   GotoIf(condition?label1)
+If “condition” is true, go to “label1”. If condition is false, then simply proceed to the next instruction.
+
+   GotoIf(condition?label1:label2)
+If “condition” is true, go to “label1”. If condition is false, go to “label2”.
+
+    GotoIf(condition?:label2)
+If “condition” is true, go to the next instruction. If “condition” is false, go to “label2”.
+
+
+Gotchas: 
+   GotoIf(condition?label1:label2)
+      Will goto a 'context' stanza. 
+          example: [lable1]
+   GotoIf(condition?label1)
+      Must goto a label is the same 'context' stanza. 
+          example: same => n(label1),NoOp(at label1)

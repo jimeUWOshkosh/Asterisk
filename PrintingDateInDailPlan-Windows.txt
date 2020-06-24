@@ -1,0 +1,5 @@
+https://www.voip-info.org/asterisk-variables/
+${DATETIME}: Current date time in the format: DDMMYYYY-HH:MM:SS 
+This is deprecated in Asterisk 1.2, 
+
+INSTEAD USE :    ${STRFTIME(${EPOCH},,%d%m%Y-%H:%M:%S)})

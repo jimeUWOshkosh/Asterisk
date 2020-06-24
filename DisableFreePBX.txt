@@ -1,0 +1,20 @@
+http://www.raspberry-asterisk.org/faq/
+How can I run Asterisk w/out FreePBX
+	If the FreePBX GUI is not needed and should be prevented from overwriting the 
+        Asterisk config files, it can be disabled (without deinstalling it):
+
+	$ systemctl disable freepbx
+
+	Apache can also be disabled if the GUI is not needed at all:
+
+	$ systemctl disable apache2
+
+	This file needs to be downloaded and placed in /etc/init.d/:
+	http://repo.raspbx.org/download/asterisk
+
+	$ chmod 755 /etc/init.d/asterisk
+	$ systemctl enable asterisk
+
+	This is a startup script from contrib/init.d from the Asterisk sources. On reboot, 
+        Asterisk starts directly, without using the amportal startup script from FreePBX. 
+        After making these changes, a complete reboot is required.
