@@ -8,11 +8,9 @@ This project is
     • Mom does Not like voicemail!!!!
     • Disaster Recovery is important
         • I do Not live in town
-        • My Mom and I review her log of bad calls every weekend
-        • I make changes to the block and approved lists
         • Weekly backups are important, then flashing a micro SDcard afterwords
 
-          Going to try going 8gb micro SDcard
+          Going to try going 8gb micro SDcard for faster flashing
           RPi 4B’s USB 3.0 are awesome for backups
 
         • Have a backup hardware: RPi, OBi110
@@ -21,8 +19,11 @@ This project is
 Either today’s telephone companies are bad or OBi110 has an issue of not
  always getting the Calling Number from the telephone company. Why
     1. OBITRUNK1 is a default phone number in the Asterisk’s whitelist table
+         ** must be alot of folks using the OBi setup **
     2. “End robocaller, solicitation, and hangup calls with Asterisk & Raspberry Pi” 
        by Bill Bishop posted 4apr2013 : Use only entering a digit to get the phone to ring
+    3. Hackaday.io's Alex has a 'Banana Phone Project'. ** His website has been discontinued **
+          Don't worry, it won't save blank caller IDs ....
 
 One of my sisters and I get hit by this numerous times a week calling Mom & Dad. 
 Increasing the Obi’s “ring delay” to 6000 does Not improve the probability of the issue from not happening.
