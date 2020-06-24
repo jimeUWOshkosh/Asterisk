@@ -2,6 +2,8 @@ June-2020
 raspbx-11-11-2019, Asterisk 16.6.1 & FreePBX 15.0.16.22
 An 8GB card or larger is recommended.
 
+Did NOT use FreePBX, only Asterisk!
+
 This project is 
     • For my parent’s in their 90’s
     • Its on a inTRAnet
@@ -28,7 +30,7 @@ Either today’s telephone companies are bad or OBi110 has an issue of not
           "Don't worry, it won't save blank caller IDs ...."
 
 One of my sisters and I get hit by this numerous times a week calling Mom & Dad. 
-Increasing the Obi’s “ring delay” to 6000 does Not improve the probability of the issue from not happening.
+Increasing the Obi’s “ring delay” to 6000 does NOT improve the probability of the issue from not happening.
 
 Therefore I would change the algorithm to
     disapprove/blacklist
