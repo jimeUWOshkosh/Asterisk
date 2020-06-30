@@ -29,7 +29,7 @@ This project is
 
 Either today’s telephone companies are bad or OBi110 has an issue of not
  always getting the Calling Number from the telephone company. Why
-    1. OBITRUNK1 is a default phone number in the Asterisk’s whitelist table
+    1. OBITRUNK1 use to be  a default phone number in the Asterisk’s whitelist table
          ** must be alot of folks using the OBi setup **
     2. “End robocaller, solicitation, and hangup calls with Asterisk & Raspberry Pi” 
        by Bill Bishop posted 4apr2013 : Uses only entering a digit to get the phone to ring
@@ -62,7 +62,7 @@ the Asterisk gets the calling phone number or not!
 
 I would also personalize the no-solicitors sound file so infrequent callers are not 
 put off.
-  ex. 867-5309 does not accept solicitations. If you are a solicitors, please hang up 
+  ex. 867-5309 does not accept solicitations. If you are a solicitor, please hang up 
       now. Otherwise to connect, press 1.
 
 Also, my parents have 5 phones in the house, so periodically a phone is not hung up 
