@@ -62,7 +62,7 @@ the Asterisk gets the calling phone number or not!
 
 I would also personalize the no-solicitors sound file so infrequent callers are not 
 put off.
-  ex. 867-5309 does not accept solicitations. If you are a solicitors, please hang up 
+  ex. 867-5309 does not accept solicitations. If you are a solicitor, please hang up 
       now. Otherwise to connect, press 1.
 
 Also, my parents have 5 phones in the house, so periodically a phone is not hung up 
