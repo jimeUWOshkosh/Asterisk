@@ -109,10 +109,12 @@ To format SD Card
 Put card into RPi
 
 Whats your preferred way to connect to your RPi
-   1) ethernet cable to the laptop. Need to setup routing on laptop
+   HDMI to monitor/TV and wireless keyboard
+
+   After I get the IP address set and RPi rebooted
+       ethernet cable to the laptop. Need to setup routing on laptop
        Ubuntu 18.04
-       Setting->Network->Wired-> '+' to add network and netmask
-   2) HDMI to TV and wireless keyboard
+           Setting->Network->Wired-> '+' to add network and netmask
 
 Default root Password: raspberry
 
@@ -181,6 +183,7 @@ software
 
 From: Asterisk for Raspberry Pi: Documentation
 http://www.raspberry-asterisk.org/documentation/
+NOTE: June-2020. Both fake-hwclock and dnsmasq are part of the raspbx-upgrade!!
 3) Running RasPBX without Internet connection
    If Internet connection is not continuously present or not present at all, 
    2 issues can appear that prevent calling between extensions:
