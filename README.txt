@@ -95,7 +95,7 @@ Other Notes
     ForceGettyOnHDMI.txt
 
     DialPlanNotes.txt
-    PrintingDateInDailPlan-Windows.txt
+    PrintingDateInDialPlan-MSWindows.txt
 
     CustomSoundFiles.txt
     WavToGSM.txt
