@@ -1,14 +1,14 @@
 Linksys - sipura 3000 FXS FXO
 
 I haven't found a example using Asterisk only that does
-an Outbound and Inbound trunks and modifies sip.conf
-and extensions.conf
+an Outbound and Inbound trunks for a landline and 
+modifies sip.conf and extensions.conf
 
 Therefore if you wish a Press N to continue type
 of interaction with all calls, I would just use
 FreeBPX.
 
-Create an extension on the FXO 
+Create an extension on the Linksys FXO 
 then in FreePBX
    1) Create a matching extension
        Application->Extensions->SIP
