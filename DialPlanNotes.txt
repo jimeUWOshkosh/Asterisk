@@ -15,5 +15,5 @@ Gotchas:
       Will goto a 'context' stanza. 
           example: [lable1]
    GotoIf(condition?label1)
-      Must goto a label is the same 'context' stanza. 
+      Must goto a label in the same 'context' stanza. 
           example: same => n(label1),NoOp(at label1)
