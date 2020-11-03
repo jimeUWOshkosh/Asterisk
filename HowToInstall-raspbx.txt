@@ -127,7 +127,7 @@ Expand filesystem
 
 Assign IP address to the RPi
 
-   $ su do raspi-config
+   $ sudo raspi-config
        Network Options
            changed hostname
        Localisation Options

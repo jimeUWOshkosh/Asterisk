@@ -1,0 +1,7 @@
+A note about running raspbx-backup in a terminal window from
+the Desktop. A lot of errors to the desktop generated.
+   1) Popups from mount issue from temporary file systems
+      raspbx-backup creates
+   2) raspbx-backup whined about stuff being busy
+
+Just ssh into the RPi to run the backup!!

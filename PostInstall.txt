@@ -1,15 +1,61 @@
-Do you want to disable WiFi and Bluetooth after you get 
-everything going?
+Configure Asterisk to use SIP instead of PJSIP
+   
+   You have to modify FreePBX
+   http://YOURPBXIPADDRESS
+      admin:admin
 
-"sudo nano /boot/config.txt"
+   In FreePBX click Settings -> SIP Settings -> Sip Legacy Settings [chan_sip]
+      Bind Port is the port number you need to use.
 
-dtoverlay=pi3-disable-bt
-dtoverlay=pi3-disable-wifi
+   Click on Sip Settings [chan_pjsip]
+      Make sure the bind port is different than the SIP bind port.
 
-"sudo systemctl disable hciuart"
+   Apply the Configuration change
 
-====
-sudo systemctl disable hciuart.service
-sudo systemctl disable bluealsa.service
-sudo systemctl disable bluetooth.service
+   See if the change was successful
+   $ sudo lsof -i:5060
+        > COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+        > asterisk 975 root   19u  IPv4  21599      0t0  UDP *:sip
+
+Do you wish to still run FreePBX and apache since your not using them?
+    $ sudo systemctl disable freepbx
+    $ sudo systemctl disable apache2
+
+    created /etc/init.d/asterisk from http://repo.raspbx.org/download/asterisk
+    $ chomd 755 /etc/init.d/asterisk
+    $ sudo systemctl endable asterisk
+
+Are you a security nut and wish to disable WiFi and Blu-tooth?
+
+    $ sudo vi /boot/config.txt
+
+    Append these two lines to the file
+    dtoverlay=pi3-disable-bt
+    dtoverlay=pi3-disable-wifi
+
+    $ sudo systemctl disable hciuart
+
+Back up sip.conf, extensions.conf and voicemail.conf
+
+Place new version of sip.conf, extensions.conf and voicemail.conf
+
+Place sound files in the correct place
+      Note1: My initial plan was to use one VOIP phone to replace the
+            answering machine therefore one message for the entire
+            system. Not using at the current time because Mom didn't
+            like. But I'm migrating it for the future.
+      Note2: created a sound file like
+             "End robocaller, solicitation, and hangup calls with Asterisk & Raspberry Pi"
+             to play when a non approved call is received. They must 
+             press a 1 to continue.
+
+   $ cd /var/lib/asterisk/sounds/en/
+   $ rm vm-intro.*
+   $ mkdir custom
+   $ cd custom
+   $ cp ~/my-vm-intro.gsm .
+   $ cp ~/my-no-solicitors.gsm .
+   $ chown -R asterisk.asterisk /var/lib/asterisk/sounds/en/custom/
+   $ cp my-vm-intro.gsm ../vm-intro.gsm
+   $ cd
 

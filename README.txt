@@ -1,3 +1,24 @@
+This project got cancelled
+   Having issues cell phones. Periodically no voice on the other end.
+   Sister #1 was giving negative reinforcement!
+     P.S. Sister #1's phone number and her name usually comes across fine.
+
+   Upgraded the firmware to 
+      newcerts5.fw.bsdiff      
+      OBi110-1-3-0-2886.fw
+   But then my sister #1 called and she could hear my parents but
+   my parents could NOT hear her.
+
+   Now the project is out, my parents still receive calls with no on 
+   the other end talking.
+
+   I was going to make people not in the preapproved list and from
+   my parent's Area Code and their Caller ID Name was
+     (WIRELESS CALLER, CELLULAR CALL, U.S. CELLULAR)
+   to get a message to press a key to continue
+   Will never get around to it now. ;-)
+
+---
 June-2020
 raspbx-11-11-2019, Asterisk 16.6.1 & FreePBX 15.0.16.22
 An 8GB card or larger is recommended.
@@ -7,6 +28,7 @@ This is Time-sensitive documentation
     Software changes
     OBi110 could be obsolete
     The FCC has said landlines where suppose to gone by 2020
+        All those security systems and elevators.
 ---
 
 Did NOT use FreePBX, only Asterisk!

@@ -5,10 +5,13 @@ Restore Factory Settings
    The OBi will reboot
 
 To Assign IP Address
-   Hook phone to outgoing phone port
+   Hook phone to outgoing phone port and ethernet to a hub
       Dial ***4
       and follow the menu
         1 to change
         192*168*0*20#
-        2 to save
+        1 to save
         OBi will reboot
+
+   Note: If I didn't have the OBI connected to a hub, it wouldn't
+         save the IP Address???
