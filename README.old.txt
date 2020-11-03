@@ -1,20 +1,22 @@
-This project got postponed
+This project got cancelled
+   Having issues cell phones. Periodically no voice on the other end.
+   Sister #1 was giving negative reinforcement!
+     P.S. Sister #1's phone number and her name usually comes across fine.
 
-   Pulled out the backup OBi110
-     DID NOT update the firmware!!!
+   Upgraded the firmware to 
+      newcerts5.fw.bsdiff      
+      OBi110-1-3-0-2886.fw
+   But then my sister #1 called and she could hear my parents but
+   my parents could NOT hear her.
 
-   Stuff I learned about AT&T 
-      We will get calls with no phone number
-      We will get calls with no one on the other end
-      Receive calls from preapproved people sometimes
-        with their name and number, some times with swat!
+   Now the project is out, my parents still receive calls with no on 
+   the other end talking.
 
-   I'm going to make people NOT in the preapproved list 
+   I was going to make people not in the preapproved list and from
+   my parent's Area Code and their Caller ID Name was
+     (WIRELESS CALLER, CELLULAR CALL, U.S. CELLULAR)
    to get a message to press a key to continue
-
-   Before implementing a blocking system, you should monitor
-   incomming calls for a few months. So you don't stop
-   automated systems for doctors, dentists and drug stores.
+   Will never get around to it now. ;-)
 
 ---
 June-2020
@@ -60,7 +62,7 @@ One of my sisters and I get hit by this numerous times a week calling Mom & Dad.
 Increasing the Obi’s “ring delay” to 6000 does NOT improve the probability of the issue from not happening.
 
 Therefore I would change the algorithm to
-    GotoIf(${DB_EXISTS(whitelist/${CALLERID(num)})}?preapproved,s,1:captcha,s,1) 
+    disapprove/blacklist
 
     Read(digit,custom/no-solicitors,1,s,1,4)      ; Read one digit in 4 seconds
     GotoIf($["${digit}" != "1"]?NoResponse)
@@ -75,6 +77,10 @@ Therefore I would change the algorithm to
     (biseee)
     PlayBack(is-curntly-busy)   5 times
     Hangup()
+
+No negative reinforcement from siblings since every one is treated the same whether 
+the Asterisk gets the calling phone number or not!
+
 
 I would also personalize the no-solicitors sound file so infrequent callers are not 
 put off.
