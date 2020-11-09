@@ -17,7 +17,7 @@ Configure Asterisk to use SIP instead of PJSIP
         > COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
         > asterisk 975 root   19u  IPv4  21599      0t0  UDP *:sip
 
-Do you wish to still run FreePBX and apache since your not using them?
+Do you wish to still run FreePBX and apache since you're not using them?
     $ sudo systemctl disable freepbx
     $ sudo systemctl disable apache2
 
