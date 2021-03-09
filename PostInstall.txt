@@ -59,3 +59,5 @@ Place sound files in the correct place
    $ cp my-vm-intro.gsm ../vm-intro.gsm
    $ cd
 
+Tried to place my one script in /home/asterisk/scripts/ but
+the permissions kept getting changed on reboot.

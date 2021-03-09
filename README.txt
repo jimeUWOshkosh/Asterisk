@@ -1,7 +1,7 @@
-This project got postponed
+This project back on
 
    Pulled out the backup OBi110
-     DID NOT update the firmware!!!
+     DID NOT update the firmware this time!!!
 
    Stuff I learned about AT&T 
       We will get calls with no phone number
@@ -60,8 +60,14 @@ One of my sisters and I get hit by this numerous times a week calling Mom & Dad.
 Increasing the Obi’s “ring delay” to 6000 does NOT improve the probability of the issue from not happening.
 
 Therefore I would change the algorithm to
-    GotoIf(${DB_EXISTS(whitelist/${CALLERID(num)})}?preapproved,s,1:captcha,s,1) 
+    same => n,Set(Result=${SHELL(/home/rosie/allow.pl "${CALLERID(num)}" "${CALLERID(name)}")})
+    same => n,GotoIf($["${Result}" = "CAPTCHA"]?captcha)   ; verify results
+    same => n,Dial(SIP/PHONE)
+    same => n,GotoIf($["${DIALSTATUS}" = "BUSY"]?biseee)
+    same => n,Hangup()
 
+
+    same => n(captcha),NoOp(captcha)
     Read(digit,custom/no-solicitors,1,s,1,4)      ; Read one digit in 4 seconds
     GotoIf($["${digit}" != "1"]?NoResponse)
     Playback(one-moment-please)
@@ -69,12 +75,17 @@ Therefore I would change the algorithm to
     GotoIf($["${DIALSTATUS}" = "BUSY"]?biseee)
     Hangup()
     ;
-    (NoResponse)
+    same => n(NoResponse),NoOp(NoResponse)
     Hangup()
     ;
-    (biseee)
+    same => n(biseee),NoOp(biseee)
     PlayBack(is-curntly-busy)   5 times
     Hangup()
+
+The sample perl program (allow.pl) has filters
+    1) the __DATA__ sections has preapproved phone numbers
+    2) Can accept certain Area Codes
+    3) Look at CallerID Name to accept certain health care providers
 
 I would also personalize the no-solicitors sound file so infrequent callers are not 
 put off.

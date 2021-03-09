@@ -177,7 +177,7 @@ Find raspbx install notes
     Need time keeper
 
 
-You connected to some network and wish to upgrade your RPi and additional
+You're connected to some network and wish to upgrade your RPi and additional
 software
     $ sudo raspbx-upgrade
 

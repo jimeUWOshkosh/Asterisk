@@ -11,7 +11,9 @@ To Assign IP Address
         1 to change
         192*168*0*20#
         1 to save
+        hang up
         OBi will reboot
+        Plug into network
 
    Note: If I didn't have the OBI connected to a hub, it wouldn't
          save the IP Address???
